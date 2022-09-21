@@ -52,6 +52,9 @@
     <Compile Include="MinuOmaVorm.Designer.cs">
       <DependentUpon>MinuOmaVorm.cs</DependentUpon>
     </Compile>
+    <Compile Include="OmaVorm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -78,6 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Football.png" />
+    <Content Include="mixkit.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

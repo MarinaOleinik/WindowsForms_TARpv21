@@ -21,6 +21,7 @@ namespace WindowsForms_TARpv21
         PictureBox pilt;
         ProgressBar riba;
         Timer aeg;
+        TextBox tekst;
         public MinuOmaVorm()
         {
             Height = 600;
@@ -36,9 +37,24 @@ namespace WindowsForms_TARpv21
             oksad.Nodes.Add(new TreeNode("Märkeruut-Checkbox"));
             oksad.Nodes.Add(new TreeNode("Radionupp-Radiobutton"));
             oksad.Nodes.Add(new TreeNode("Edenemisriba-ProgressBar"));
+            oksad.Nodes.Add(new TreeNode("Tekstkast-TextBox"));
+            oksad.Nodes.Add(new TreeNode("OmaVorm-MyForm"));
             puu.AfterSelect += Puu_AfterSelect;
             puu.Nodes.Add(oksad);
+            puu.DoubleClick += Puu_DoubleClick;
             this.Controls.Add(puu);
+        }
+
+        private void Puu_DoubleClick(object sender, EventArgs e)
+        {
+            if (tekst.Enabled)
+            {
+                tekst.Enabled = false;
+            }
+            else
+            {
+                tekst.Enabled = true;
+            }
         }
 
         private void Puu_AfterSelect(object sender, TreeViewEventArgs e)
@@ -67,7 +83,7 @@ namespace WindowsForms_TARpv21
             };
             pilt = new PictureBox
             {
-                Image = new Bitmap("Football.png"),
+                Image = new Bitmap(@"..\..\Football.png"),
                 Location = new Point(300, 450),
                 Size = new Size(100, 100),
                 SizeMode = PictureBoxSizeMode.Zoom
@@ -165,7 +181,31 @@ namespace WindowsForms_TARpv21
                 aeg.Tick += Aeg_Tick;
                 this.Controls.Add(riba);
             }
+            else if (e.Node.Text== "Tekstkast-TextBox")
+            {
+                tekst = new TextBox
+                {
+                    Font = new Font("Arial",34,FontStyle.Italic),
+                    Location = new Point(350,400),
+                    Enabled = false
+                };
+                //tekst.MouseDoubleClick += Tekst_MouseDoubleClick;
+
+                this.Controls.Add(tekst);
+            }
+            else if (e.Node.Text== "OmaVorm-MyForm")
+            {
+                OmaVorm oma = new OmaVorm("Kuulame kuusikat","Vajuta siia","Faili nimi");
+                oma.ShowDialog();
+            }
         }
+
+        
+            
+        
+
+        
+
         private void Aeg_Tick(object sender, EventArgs e)
         {
             riba.PerformStep();
