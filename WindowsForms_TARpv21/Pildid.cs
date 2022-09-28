@@ -22,7 +22,7 @@ namespace WindowsForms_TARpv21
         public Pildid() 
         {
             this.Text = "Pildid";
-            this.Size = new System.Drawing.Size(920, 550);
+            this.Size = new System.Drawing.Size(790, 440);
             openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "JPEG Files(*.jpg) | *.jpg | PNG Files(*.png) | *.png | BMP Files(*.bmp) | *.bmp | All files(*.*) | *.*";
             colorDialog = new ColorDialog();
@@ -31,7 +31,7 @@ namespace WindowsForms_TARpv21
                 AutoSize = true,
                 ColumnCount = 2,
                 RowCount = 2,
-                Location = new System.Drawing.Point(0, 0),
+                Location = new System.Drawing.Point(20, 20),
                 TabIndex = 0,
                 BackColor = System.Drawing.Color.White, 
             };
@@ -39,8 +39,6 @@ namespace WindowsForms_TARpv21
             tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 85F));
             tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
             tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            
-            
 
             pictureBox = new System.Windows.Forms.PictureBox
             {
@@ -48,7 +46,7 @@ namespace WindowsForms_TARpv21
                 Dock = System.Windows.Forms.DockStyle.Fill,
                 TabIndex = 0,
                 TabStop = false,
-                AutoSize = true,
+                AutoSize = false,
             };
             pictureBox.DoubleClick += PictureBox_DoubleClick;
             tableLayoutPanel.Controls.Add(pictureBox,0,0);
@@ -67,17 +65,17 @@ namespace WindowsForms_TARpv21
             {
                 Text = "Kinni",
             };
-            close_btn.Click += Close_btn_Click;
             clear_btn = new Button
             {
                 Text = "Kustuta",
             };
-            clear_btn.Click += Clear_btn_Click;
             show_btn = new Button
             {
                 Text = "Näita",
             };
-            show_btn.Click += Show_btn_Click;
+            show_btn.Click += Tegevus;
+            clear_btn.Click += Tegevus;
+            close_btn.Click += Tegevus;
             Button[] buttons = { clear_btn, show_btn, close_btn };
             flowLayoutPanel = new FlowLayoutPanel
             {
@@ -94,6 +92,26 @@ namespace WindowsForms_TARpv21
 
         }
 
+        private void Tegevus(object sender, EventArgs e)
+        {
+            Button nupp_sender = (Button)sender;
+            if (nupp_sender.Text=="Näita")
+            {
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    pictureBox.Load(openFileDialog.FileName);
+                }  
+            }
+            else if (nupp_sender.Text == "Kustuta")
+            {
+                pictureBox.Image = null;
+            }
+            else if (nupp_sender.Text ==  "Kinni")
+            {
+                this.Close();
+            }
+        }
+
         private void CheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox.Checked)
@@ -108,22 +126,6 @@ namespace WindowsForms_TARpv21
                 this.BackColor = colorDialog.Color;
         }
 
-        private void Close_btn_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
-        private void Clear_btn_Click(object sender, EventArgs e)
-        {
-            pictureBox.Image = null;
-        }
-
-        private void Show_btn_Click(object sender, EventArgs e)
-        {
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                pictureBox.Load(openFileDialog.FileName);
-            }
-        }
     }
 }

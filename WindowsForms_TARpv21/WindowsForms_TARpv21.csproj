@@ -94,6 +94,7 @@
   <ItemGroup>
     <Content Include="Football.png" />
     <Content Include="mixkit.wav" />
+    <Content Include="Pildid_vormi_näidis.JPG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
