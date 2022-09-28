@@ -10,6 +10,7 @@ namespace WindowsForms_TARpv21
 {
     public class OmaVorm: Form
     {
+
         public OmaVorm() { }
         public OmaVorm(string Pealkiri,string Nupp,string Fail)
         {
@@ -50,6 +51,18 @@ namespace WindowsForms_TARpv21
             {
                 MessageBox.Show(":(");
             }
+        }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // OmaVorm
+            // 
+            this.ClientSize = new System.Drawing.Size(479, 307);
+            this.Name = "OmaVorm";
+            this.ResumeLayout(false);
+
         }
     }
 }

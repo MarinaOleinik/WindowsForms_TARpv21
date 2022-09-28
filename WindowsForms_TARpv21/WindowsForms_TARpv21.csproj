@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Matemaatika.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MinuOmaVorm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -55,8 +58,17 @@
     <Compile Include="OmaVorm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Pildid.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="OmaVorm.resx">
+      <DependentUpon>OmaVorm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pildid.resx">
+      <DependentUpon>Pildid.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
