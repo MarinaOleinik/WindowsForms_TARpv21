@@ -16,7 +16,7 @@ namespace WindowsForms_TARpv21
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Pildid());
+            Application.Run(new Matemaatika());
         }
     }
 }
